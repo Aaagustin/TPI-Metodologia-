@@ -1,7 +1,7 @@
 package view;
-
 import controller.ProductoController;
-import model.Producto;
+
+import java.util.Scanner;
 
 public class ProductoView {
 
@@ -11,10 +11,37 @@ public class ProductoView {
         controller = new ProductoController();
     }
 
-    public void mostrarProductos() {
+    public void iniciar() {
 
-        for (Producto p : controller.obtenerProductos()) {
-            System.out.println(p);
-        }
+        Scanner teclado = new Scanner(System.in);
+
+        int opcion;
+
+        do {
+            System.out.println("1- Agregar producto");
+            System.out.println("2- Listar productos");
+            System.out.println("3- Salir");
+
+            opcion = teclado.nextInt();
+            teclado.nextLine();
+
+            switch (opcion) {
+
+                case 1:
+                    agregarProducto(teclado);
+                    break;
+
+                case 2:
+                    listarProductos();
+                    break;
+            }
+
+        } while (opcion != 3);
+    }
+
+    private void agregarProducto(Scanner teclado) {
+    }
+
+    private void listarProductos() {
     }
 }

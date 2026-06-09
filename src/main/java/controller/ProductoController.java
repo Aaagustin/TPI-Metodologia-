@@ -2,7 +2,6 @@ package controller;
 
 import model.Producto;
 import repository.ProductoRepository;
-
 import java.util.List;
 
 public class ProductoController {
@@ -18,6 +17,6 @@ public class ProductoController {
     }
 
     public List<Producto> obtenerProductos() {
-        return repository.listar();
+        return repository.obtenerTodos();
     }
 }
