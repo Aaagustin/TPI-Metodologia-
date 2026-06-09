@@ -1,27 +1,41 @@
-package model;
+package Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Direccion {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDireccion;
     private String pais;
     private String provincia;
     private String localidad;
     private String calle;
     private int numero;
-    private String piso;
     private String departamento;
+    
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente", insertable = false, updatable = false)
+    private Cliente cli;
 
-    public Direccion(Long idDireccion, String pais, String provincia,
-                     String localidad, String calle, int numero,
-                     String piso, String departamento) {
+    public Direccion(Long idDireccion, String pais, String provincia, String localidad, String calle, int numero, String departamento, Cliente cli) {
         this.idDireccion = idDireccion;
         this.pais = pais;
         this.provincia = provincia;
         this.localidad = localidad;
         this.calle = calle;
         this.numero = numero;
-        this.piso = piso;
         this.departamento = departamento;
+        this.cli = cli;
+    }
+
+    public Direccion() {
     }
 
     public Long getIdDireccion() {
@@ -72,14 +86,6 @@ public class Direccion {
         this.numero = numero;
     }
 
-    public String getPiso() {
-        return piso;
-    }
-
-    public void setPiso(String piso) {
-        this.piso = piso;
-    }
-
     public String getDepartamento() {
         return departamento;
     }
@@ -88,8 +94,13 @@ public class Direccion {
         this.departamento = departamento;
     }
 
-    @Override
-    public String toString() {
-        return calle + " " + numero + ", " + localidad + ", " + provincia;
+    public Cliente getCli() {
+        return cli;
     }
+
+    public void setCli(Cliente cli) {
+        this.cli = cli;
+    }
+    
+
 }

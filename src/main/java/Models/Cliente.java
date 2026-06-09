@@ -1,14 +1,28 @@
-package model;
+package Models;
 
+import Models.Direccion;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
     private String nombre;
     private String apellido;
     private String email;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_cliente")
     private List<Direccion> listaDirecciones;
 
     public Cliente(Long idCliente, String nombre, String apellido, String email) {
