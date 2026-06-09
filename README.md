@@ -3,6 +3,8 @@
 ## Integrante
 - Agustín Heredia
 - Pablo Bossio
+- Tomás Grasso
+- Luca Escudero 
 
 ## Proyecto
 Sistema de gestión para Body Paint.
